@@ -1,0 +1,1491 @@
+{
+  "osm_version": 0.6,
+  "osm_generator": "Overpass API 0.7.56.7 b85c4387",
+  "osm3s": {
+    "timestamp_osm_base": "2021-02-13T19:34:02Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "dspc_enhancements": {
+    "query_bbox": [
+      -32.8479015806428,
+      -71.01635456085205,
+      -32.840798706369604,
+      -71.0077178478241
+    ],
+    "enhancements_timestamp": "2021-02-22T03:30:45.508Z",
+    "generator": "dspctree.buildOSMGroups",
+    "comments": "KEY ENTITIES:\nway 835546011 Central Termoeléctrica Las Vegas plant\n+node 7798904970 generator\n+node 7798904969 generator\nway 835546012 Central Termoeléctrica Los Vientos plant\n+node 7798904976 generator\nway 513601425 Esperanza substation\nway 513601426 Las Vegas - Chilquinta substation\nway 734635514 La Calera - Las Vegas minor_line\n"
+  },
+  "elements": [
+    {
+      "uid": "way835546011",
+      "osmdata": {
+        "type": "way",
+        "id": 835546011,
+        "nodes": [
+          7798904975,
+          7798904974,
+          7798904973,
+          7798904972,
+          7798904971,
+          5019960012,
+          7798904975
+        ],
+        "tags": {
+          "name": "Central Termoeléctrica Las Vegas",
+          "owner": "Tecnored",
+          "plant:method": "combustion",
+          "plant:output:electricity": "2 MW",
+          "plant:source": "diesel",
+          "power": "plant",
+          "source": "https://infotecnica.coordinador.cl/",
+          "start_date": "2007-04-20"
+        }
+      },
+      "children": [
+        {
+          "uid": "node7798904970",
+          "osmdata": {
+            "type": "node",
+            "id": 7798904970,
+            "lat": -32.8428674,
+            "lon": -71.011202,
+            "tags": {
+              "generator:method": "combustion",
+              "generator:output:electricity": "yes",
+              "generator:source": "diesel",
+              "generator:type": "reciprocating_engine",
+              "power": "generator"
+            }
+          },
+          "children": []
+        },
+        {
+          "uid": "node7798904969",
+          "osmdata": {
+            "type": "node",
+            "id": 7798904969,
+            "lat": -32.8428235,
+            "lon": -71.0112034,
+            "tags": {
+              "generator:method": "combustion",
+              "generator:output:electricity": "yes",
+              "generator:source": "diesel",
+              "generator:type": "reciprocating_engine",
+              "power": "generator"
+            }
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "uid": "way835546012",
+      "osmdata": {
+        "type": "way",
+        "id": 835546012,
+        "nodes": [
+          7798904977,
+          5019960017,
+          5019960016,
+          5019960015,
+          5019960014,
+          7798904979,
+          7798904978,
+          7798904977
+        ],
+        "tags": {
+          "landuse": "industrial",
+          "name": "Central Termoeléctrica Los Vientos",
+          "operator": "Generadora Metropolitana",
+          "plant:method": "combustion",
+          "plant:output:electricity": "132 MW",
+          "plant:source": "diesel;gas",
+          "power": "plant",
+          "source": "https://infotecnica.coordinador.cl/",
+          "start_date": "2007-01-03",
+          "website": "https://generadora.cl/los-vientos/"
+        }
+      },
+      "children": [
+        {
+          "uid": "node7798904976",
+          "osmdata": {
+            "type": "node",
+            "id": 7798904976,
+            "lat": -32.8439018,
+            "lon": -71.0129911,
+            "tags": {
+              "generator:method": "combustion",
+              "generator:output:electricity": "132 MW",
+              "generator:source": "diesel;gas",
+              "generator:type": "gas_turbine",
+              "power": "generator"
+            }
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "uid": "way513601425",
+      "osmdata": {
+        "type": "way",
+        "id": 513601425,
+        "nodes": [
+          5019960009,
+          5019960008,
+          5019960007,
+          5019960006,
+          5019960009
+        ],
+        "tags": {
+          "name": "Esperanza",
+          "power": "substation",
+          "source": "https://infotecnica.coordinador.cl/",
+          "voltage": "110000"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "way513601426",
+      "osmdata": {
+        "type": "way",
+        "id": 513601426,
+        "nodes": [
+          5019960014,
+          5019960013,
+          7798904980,
+          7798904981,
+          7798904975,
+          5019960012,
+          5019960011,
+          5019960010,
+          7798904977,
+          7798904978,
+          7798904979,
+          5019960014
+        ],
+        "tags": {
+          "name": "Las Vegas - Chilquinta",
+          "power": "substation",
+          "source": "https://infotecnica.coordinador.cl/",
+          "voltage": "110000"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "way734635514",
+      "osmdata": {
+        "type": "way",
+        "id": 734635514,
+        "nodes": [
+          6879999829,
+          6879999828,
+          6879999827,
+          6879999826,
+          6879999825,
+          6879999824,
+          6879999823,
+          6879999822,
+          6879999821,
+          6879999820,
+          6879999819,
+          6879999818,
+          6879999817,
+          6879999816,
+          6879999815,
+          6879999814,
+          6879999813,
+          6879999812,
+          6879999811,
+          6879999810,
+          6879999809,
+          6879999808,
+          6879999807,
+          6879999806,
+          6879999805,
+          6879999804,
+          6879999803,
+          6879999802,
+          6879999801,
+          6879999800,
+          6879999799,
+          6879999798,
+          6879999797,
+          6879999796,
+          6879999795,
+          6879999794,
+          6879999793,
+          6879999792,
+          6879999791,
+          6879999790,
+          6879999789,
+          6879999788,
+          6879999787,
+          6879999786,
+          6879999785,
+          6879997484,
+          6879997483,
+          6879997482,
+          6879997481,
+          6879997480,
+          6879997479,
+          6879997478,
+          6879997477,
+          6879997476,
+          6879997475,
+          6879997474,
+          6879997473,
+          6879997472,
+          6879997471,
+          6879997470,
+          6879997469,
+          6879997468,
+          6879997467,
+          6879997466,
+          6879997465,
+          6879997464,
+          6879997463,
+          6879997462,
+          6879997461,
+          6879997460,
+          6879997459,
+          6879997458,
+          6879997457
+        ],
+        "tags": {
+          "name": "La Calera - Las Vegas",
+          "operator": "Chilquinta",
+          "power": "minor_line",
+          "source": "https://infotecnica.coordinador.cl/",
+          "voltage": "44000"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999814",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999814,
+        "lat": -32.8572596,
+        "lon": -71.1279332,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999815",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999815,
+        "lat": -32.8568444,
+        "lon": -71.1296062,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999811",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999811,
+        "lat": -32.8589564,
+        "lon": -71.1220344,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999812",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999812,
+        "lat": -32.858126,
+        "lon": -71.1247811,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999813",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999813,
+        "lat": -32.8577656,
+        "lon": -71.1259223,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999807",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999807,
+        "lat": -32.8569534,
+        "lon": -71.1132588,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999808",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999808,
+        "lat": -32.8575908,
+        "lon": -71.114665,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999809",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999809,
+        "lat": -32.8583873,
+        "lon": -71.1165282,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999810",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999810,
+        "lat": -32.859283,
+        "lon": -71.1190048,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999829",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999829,
+        "lat": -32.8557343,
+        "lon": -71.1545055,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999826",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999826,
+        "lat": -32.8553642,
+        "lon": -71.1482227,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999827",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999827,
+        "lat": -32.855476,
+        "lon": -71.1505552,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999828",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999828,
+        "lat": -32.8556667,
+        "lon": -71.1517391,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999821",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999821,
+        "lat": -32.8543702,
+        "lon": -71.13956,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999822",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999822,
+        "lat": -32.8540924,
+        "lon": -71.1403377,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999823",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999823,
+        "lat": -32.8539534,
+        "lon": -71.1410323,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999824",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999824,
+        "lat": -32.8550948,
+        "lon": -71.1424111,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999825",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999825,
+        "lat": -32.8552336,
+        "lon": -71.1451613,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999818",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999818,
+        "lat": -32.8555431,
+        "lon": -71.1346791,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999819",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999819,
+        "lat": -32.8552653,
+        "lon": -71.1361793,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999820",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999820,
+        "lat": -32.8547254,
+        "lon": -71.1379701,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999816",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999816,
+        "lat": -32.8564262,
+        "lon": -71.1309878,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999817",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999817,
+        "lat": -32.8560041,
+        "lon": -71.1327391,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999804",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999804,
+        "lat": -32.8550068,
+        "lon": -71.1083632,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999805",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999805,
+        "lat": -32.855738,
+        "lon": -71.1100553,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999806",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999806,
+        "lat": -32.8564054,
+        "lon": -71.1117865,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999799",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999799,
+        "lat": -32.8532015,
+        "lon": -71.1003987,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999800",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999800,
+        "lat": -32.853311,
+        "lon": -71.10173,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999801",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999801,
+        "lat": -32.8537464,
+        "lon": -71.1035302,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999802",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999802,
+        "lat": -32.8540075,
+        "lon": -71.1052985,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999803",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999803,
+        "lat": -32.8543656,
+        "lon": -71.1064989,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999796",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999796,
+        "lat": -32.8519095,
+        "lon": -71.0941655,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999797",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999797,
+        "lat": -32.8521084,
+        "lon": -71.0958937,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999798",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999798,
+        "lat": -32.8525528,
+        "lon": -71.0979217,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999794",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999794,
+        "lat": -32.8506167,
+        "lon": -71.0883204,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999795",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999795,
+        "lat": -32.8513584,
+        "lon": -71.0921434,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999791",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999791,
+        "lat": -32.8491439,
+        "lon": -71.0809523,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999792",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999792,
+        "lat": -32.8494494,
+        "lon": -71.0826191,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999793",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999793,
+        "lat": -32.8497946,
+        "lon": -71.0845744,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999788",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999788,
+        "lat": -32.8478301,
+        "lon": -71.0745711,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999789",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999789,
+        "lat": -32.848219,
+        "lon": -71.0765157,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999790",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999790,
+        "lat": -32.8486634,
+        "lon": -71.0786826,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999785",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999785,
+        "lat": -32.8465517,
+        "lon": -71.0684341,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999786",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999786,
+        "lat": -32.8469961,
+        "lon": -71.0703787,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879999787",
+      "osmdata": {
+        "type": "node",
+        "id": 6879999787,
+        "lat": -32.8474405,
+        "lon": -71.0725456,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997481",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997481,
+        "lat": -32.8447627,
+        "lon": -71.0611636,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997482",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997482,
+        "lat": -32.8453505,
+        "lon": -71.0631165,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997483",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997483,
+        "lat": -32.8457761,
+        "lon": -71.0646155,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997484",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997484,
+        "lat": -32.8461628,
+        "lon": -71.0665728,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997478",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997478,
+        "lat": -32.8437763,
+        "lon": -71.0550655,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997479",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997479,
+        "lat": -32.8440826,
+        "lon": -71.0575337,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997480",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997480,
+        "lat": -32.8443911,
+        "lon": -71.0597295,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997477",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997477,
+        "lat": -32.8434415,
+        "lon": -71.0531896,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997475",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997475,
+        "lat": -32.8425977,
+        "lon": -71.0490358,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997476",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997476,
+        "lat": -32.8429416,
+        "lon": -71.0509672,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997471",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997471,
+        "lat": -32.8405264,
+        "lon": -71.0410895,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997472",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997472,
+        "lat": -32.8410264,
+        "lon": -71.0431175,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997473",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997473,
+        "lat": -32.8417194,
+        "lon": -71.0449111,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997474",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997474,
+        "lat": -32.8422373,
+        "lon": -71.046604,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997468",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997468,
+        "lat": -32.8408306,
+        "lon": -71.0362159,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997469",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997469,
+        "lat": -32.8401097,
+        "lon": -71.0387281,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997470",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997470,
+        "lat": -32.8402486,
+        "lon": -71.0393394,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997466",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997466,
+        "lat": -32.8414696,
+        "lon": -71.0319655,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997467",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997467,
+        "lat": -32.8411918,
+        "lon": -71.033549,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997463",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997463,
+        "lat": -32.8424698,
+        "lon": -71.0241593,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997464",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997464,
+        "lat": -32.842192,
+        "lon": -71.0260761,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997465",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997465,
+        "lat": -32.8419419,
+        "lon": -71.0278541,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997460",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997460,
+        "lat": -32.8429683,
+        "lon": -71.0159246,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997461",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997461,
+        "lat": -32.8431088,
+        "lon": -71.0189366,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997462",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997462,
+        "lat": -32.8428588,
+        "lon": -71.0206312,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960014",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960014,
+        "lat": -32.8435345,
+        "lon": -71.0125432
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960015",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960015,
+        "lat": -32.8444088,
+        "lon": -71.012401
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960016",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960016,
+        "lat": -32.8445869,
+        "lon": -71.0137743
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960017",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960017,
+        "lat": -32.8433744,
+        "lon": -71.014013
+      },
+      "children": []
+    },
+    {
+      "uid": "node7798904978",
+      "osmdata": {
+        "type": "node",
+        "id": 7798904978,
+        "lat": -32.8435502,
+        "lon": -71.0130581
+      },
+      "children": []
+    },
+    {
+      "uid": "node7798904979",
+      "osmdata": {
+        "type": "node",
+        "id": 7798904979,
+        "lat": -32.8434781,
+        "lon": -71.0125592
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960006",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960006,
+        "lat": -32.8421869,
+        "lon": -71.0101318
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960007",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960007,
+        "lat": -32.8424077,
+        "lon": -71.0098207
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960008",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960008,
+        "lat": -32.8428674,
+        "lon": -71.0102821
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960009",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960009,
+        "lat": -32.8426353,
+        "lon": -71.0105958
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960010",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960010,
+        "lat": -32.8432325,
+        "lon": -71.0128543
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960011",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960011,
+        "lat": -32.8430297,
+        "lon": -71.0128784
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960012",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960012,
+        "lat": -32.8428156,
+        "lon": -71.0113979
+      },
+      "children": []
+    },
+    {
+      "uid": "node5019960013",
+      "osmdata": {
+        "type": "node",
+        "id": 5019960013,
+        "lat": -32.8433316,
+        "lon": -71.0113388
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997457",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997457,
+        "lat": -32.8425751,
+        "lon": -71.0115626,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997458",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997458,
+        "lat": -32.842825,
+        "lon": -71.0127015,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997459",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997459,
+        "lat": -32.8428325,
+        "lon": -71.0144548,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node7798904971",
+      "osmdata": {
+        "type": "node",
+        "id": 7798904971,
+        "lat": -32.8427784,
+        "lon": -71.011029
+      },
+      "children": []
+    },
+    {
+      "uid": "node7798904972",
+      "osmdata": {
+        "type": "node",
+        "id": 7798904972,
+        "lat": -32.8428911,
+        "lon": -71.0110223
+      },
+      "children": []
+    },
+    {
+      "uid": "node7798904973",
+      "osmdata": {
+        "type": "node",
+        "id": 7798904973,
+        "lat": -32.842899,
+        "lon": -71.0111403
+      },
+      "children": []
+    },
+    {
+      "uid": "node7798904974",
+      "osmdata": {
+        "type": "node",
+        "id": 7798904974,
+        "lat": -32.8430804,
+        "lon": -71.011088
+      },
+      "children": []
+    },
+    {
+      "uid": "node7798904975",
+      "osmdata": {
+        "type": "node",
+        "id": 7798904975,
+        "lat": -32.8431259,
+        "lon": -71.0113136
+      },
+      "children": []
+    },
+    {
+      "uid": "node7798904977",
+      "osmdata": {
+        "type": "node",
+        "id": 7798904977,
+        "lat": -32.8432654,
+        "lon": -71.0131234
+      },
+      "children": []
+    },
+    {
+      "uid": "node7798904980",
+      "osmdata": {
+        "type": "node",
+        "id": 7798904980,
+        "lat": -32.8431807,
+        "lon": -71.0113549
+      },
+      "children": []
+    },
+    {
+      "uid": "node7798904981",
+      "osmdata": {
+        "type": "node",
+        "id": 7798904981,
+        "lat": -32.8431514,
+        "lon": -71.0113066
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997457",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997457,
+        "lat": -32.8425751,
+        "lon": -71.0115626,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997458",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997458,
+        "lat": -32.842825,
+        "lon": -71.0127015,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997459",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997459,
+        "lat": -32.8428325,
+        "lon": -71.0144548,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    },
+    {
+      "uid": "node6879997460",
+      "osmdata": {
+        "type": "node",
+        "id": 6879997460,
+        "lat": -32.8429683,
+        "lon": -71.0159246,
+        "tags": {
+          "power": "pole"
+        }
+      },
+      "children": []
+    }
+  ]
+}

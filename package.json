@@ -1,0 +1,14 @@
+{
+  "name": "treeify",
+  "version": "1.0.0",
+  "description": "DSPC Tree Builder",
+  "main": "dspcTreeTest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@turf/turf": "^6.3.0"
+  }
+}
