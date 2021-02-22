@@ -1,0 +1,45 @@
+[
+  {
+    "type": "relation",
+    "id": "06711249034980926",
+    "members": [
+      {
+        "type": "way",
+        "ref": "835546012",
+        "role": "self"
+      },
+      {
+        "type": "node",
+        "ref": "7798904976",
+        "role": "child"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way835546012 plant"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "016150289674704332",
+    "members": [
+      {
+        "type": "way",
+        "ref": "835546011",
+        "role": "self"
+      },
+      {
+        "type": "node",
+        "ref": "7798904969",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "7798904970",
+        "role": "child"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way835546011 plant"
+    }
+  }
+]

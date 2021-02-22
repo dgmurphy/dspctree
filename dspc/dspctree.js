@@ -22,6 +22,10 @@ function osmResponseToDspcTree(osmResponse, bbox) {
 
     let osmAreas = buildOSMAreas(osmElementsList)  // list of areas and items inside
     let osmGroups = buildOSMGroups(osmAreas)   // parent-children relations
+    // Debug: Write Groups to File
+    DspcUtils.saveGroups(osmGroups)
+
+
     let osmGroupsList = osmGroups.groups 
     let osmGroupsMeta = { "generator": osmGroups.generator }
 
@@ -66,6 +70,63 @@ function osmResponseToDspcTree(osmResponse, bbox) {
 
 }
 exports.osmResponseToDspcTree = osmResponseToDspcTree;
+
+
+/**
+ * buildOSMGroups is a high-level routine that builds valid OSM 'relations' elements
+ * that DSPC will use to transform the flat OSM response into a heirarchy of
+ * objects that contain other objects. The 'areas' object is a temporary compact
+ * entity that just has the UIDs of the elements. The osmGroups object has a slightly more
+ * complex structure that expresses valid OSM relations.
+ *
+ * @param {Object} osmAreas The list if elements that contain other elements
+ * @returns {json}  Valid OSM relations elements expressing the heirarchy
+ */
+function buildOSMGroups(osmAreas) {
+
+    let osmGroups = {
+        "generator": "dspctree.buildOSMGroups",
+        "groups": []
+    }
+
+    for (let i = 0; i < osmAreas.length; ++i) {
+
+        let group = {
+            "type": "relation",
+            "id": DspcUtils.generateNodeID(),
+            "members":[]
+        }
+
+        osmArea = osmAreas[i]
+        typeAndID = DspcUtils.getTypeAndIDFromUID(osmArea.uid)
+        
+        // add the parent member
+        member = {
+            "type": typeAndID.eltype,
+            "ref": typeAndID.id,
+            "role": "self"
+        }
+        group.members.push(member)
+
+        // add the child members
+        for (let j = 0; j < osmArea.contains.length; ++j) {
+            typeAndID = DspcUtils.getTypeAndIDFromUID(osmArea.contains[j])
+            member = {
+                "type": typeAndID.eltype,
+                "ref": typeAndID.id,
+                "role": "child"
+            }
+            group.members.push(member)
+        }
+
+        // add the group tags
+        group.tags = { "dspc_group": "Group: " + osmArea.uid + " " + osmArea.powerTag }
+
+        osmGroups.groups.push(group)
+    }
+
+    return osmGroups
+}
 
 
 /**
@@ -235,61 +296,7 @@ function buildOSMAreas(osmElementsList) {
 
 
 
-/**
- * buildOSMGroups is a high-level routine that builds valid OSM 'relations' elements
- * that DSPC will use to transform the flat OSM response into a heirarchy of
- * objects that contain other objects. The 'areas' object is a temporary compact
- * entity that just has the UIDs of the elements. The osmGroups object has a slightly more
- * complex structure that expresses valid OSM relations.
- *
- * @param {Object} osmAreas The list if elements that contain other elements
- * @returns {json}  Valid OSM relations elements expressing the heirarchy
- */
-function buildOSMGroups(osmAreas) {
 
-    let osmGroups = {
-        "generator": "dspctree.buildOSMGroups",
-        "groups": []
-    }
-
-    for (let i = 0; i < osmAreas.length; ++i) {
-
-        let group = {
-            "type": "relation",
-            "id": DspcUtils.generateNodeID(),
-            "members":[]
-        }
-
-        osmArea = osmAreas[i]
-        typeAndID = DspcUtils.getTypeAndIDFromUID(osmArea.uid)
-        
-        // add the parent member
-        member = {
-            "type": typeAndID.eltype,
-            "ref": typeAndID.id,
-            "role": "self"
-        }
-        group.members.push(member)
-
-        // add the child members
-        for (let j = 0; j < osmArea.contains.length; ++j) {
-            typeAndID = DspcUtils.getTypeAndIDFromUID(osmArea.contains[j])
-            member = {
-                "type": typeAndID.eltype,
-                "ref": typeAndID.id,
-                "role": "child"
-            }
-            group.members.push(member)
-        }
-
-        // add the group tags
-        group.tags = { "dspc_group": "Group: " + osmArea.uid + " " + osmArea.powerTag }
-
-        osmGroups.groups.push(group)
-    }
-
-    return osmGroups
-}
 
 
 

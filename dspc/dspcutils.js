@@ -519,3 +519,24 @@ function buildTreeString(roots) {
     return treeString
 }
 exports.buildTreeString = buildTreeString;
+
+/** 
+ * Debug routine to write a groups file containing only 
+ * parents that have children
+ */
+function saveGroups(osmGroups) {
+
+    grpsWithChildren = []
+    osmGroups.groups.forEach(function(group) {
+        hasChildren = false
+        group.members.forEach(function(member) {
+            if (member.role === "child")
+                hasChildren = true
+        })
+        if (hasChildren)
+            grpsWithChildren.push(group)
+    })
+
+    writeJs("./dspc/DSPCgroups.json", grpsWithChildren)
+}
+exports.saveGroups = saveGroups;
