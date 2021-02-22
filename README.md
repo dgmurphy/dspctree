@@ -3,4 +3,5 @@ Converts an OSM entity list JSON response into a heirarchical tree based on whic
 
 ## Test
 npm install
+
 node dspc/testDspctree.js 
