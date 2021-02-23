@@ -87,6 +87,103 @@ class OSMTreeNode {
 exports.OSMTreeNode = OSMTreeNode;
 
 
+/**
+ * RelationTranslator is used to build a turf.js polygon from
+ * an OSM relation object consisting of ways.
+ * Limitations:
+ * - Only looks for 1 linear ring consisting of outer roles.
+ *   If the relation has islands of polygons all but one will be ignored
+ * - Inner roles are ignored so holes in the shape will be ignored. 
+ * - If the relation uses nodes or other relations to define the shape
+ *   then this will not work.
+ * 
+ */
+class RelationTranslator {
+
+    constructor(osmRelation, elements) {
+      this.relation = osmRelation
+      this.elements = elements
+    }
+    /** Get the OSM way for the given node ID */
+    findWay(id) {
+        for (let i = 0; i < this.elements.length; ++i) {
+            if ((this.elements[i].id === id) && (this.elements[i].type === "way"))
+                return this.elements[i]
+        }    
+    }
+
+    /** Get the index of the given node in the list of ways */
+    getIndexOfWay(node, ways) {
+
+        for (let i = 0; i < ways.length; ++i) {
+    
+            let nodes = ways[i].nodes
+    
+            if (nodes[0] === node) {  
+                return { "idx": i, "pos": "start"}
+            }
+            else if (nodes[nodes.length - 1] == node) {
+                return { "idx": i, "pos": "end"}
+            }
+        }
+    }    
+
+    /** Make the turf polygon and return it */
+    getPolygon() {
+
+        let members = relation.members
+
+        // Ignore inner ways 
+        // Collect all members that are outer ways
+        let ways = []
+        let self = this
+        members.forEach(function(mem) {
+            if ((mem.type === "way") && (mem.role === "outer")) {
+                let way = self.findWay(mem.ref, self.elements)
+                ways.push(way)
+            } else {
+                console.log("WARN: Not all relation members are outer ways.")
+            }    
+        })
+
+        console.log("Found " + ways.length + " outer ways")
+
+        let wayRing = []
+        let way = ways.shift()
+        let startNode = way.nodes[0]
+        let nextNode = way.nodes[way.nodes.length - 1]
+        wayRing.push(way)
+
+        while (nextNode !== startNode) {
+            // get the way that has the next node
+            let idxPos = this.getIndexOfWay(nextNode, ways)
+            let nextWay = ways.splice(idxPos.idx, 1)[0]
+            if (idxPos.pos === "end")
+                nextWay.nodes.reverse()  // node on wrong end
+            wayRing.push(nextWay)
+            nextNode = nextWay.nodes[nextWay.nodes.length - 1]
+        }
+
+        let mergedWay = {
+            "type": "way",
+            "id": 1,
+            "nodes": []
+        }
+
+        for (let i = 0; i < wayRing.length; ++i) {
+            for (let j = 0; j < wayRing[i].nodes.length; ++j)
+                mergedWay.nodes.push(wayRing[i].nodes[j])
+        }
+
+        let tpoly = DspcUtils.makePolyFromClosedWay(mergedWay, this.elements)
+
+        return tpoly
+    }
+
+}
+exports.RelationTranslator = RelationTranslator;
+
+
 /** 
  * Random ID for the new OSM group relations that are synthesized
  * by these routines. Needs to be unique but that is not enforced here.
@@ -359,7 +456,9 @@ function makeTurfFromWay(wayEl, elements) {
 
 /**
  * Build the Turf object based on the type of OSM element.
- * TODO: make relations into MultiPolygon
+ *
+ *  TODO: The case 'relation' is untested
+ * 
  * @param {object} osmEl OSM element 
  * @param {array} elements list of OSM elements 
  * @returns {object} Turf object
@@ -376,7 +475,8 @@ function makeTurfObjectFromOSMelement(osmEl, elements) {
           tobj = makeTurfFromWay(osmEl, elements)
           break;
         case "relation":
-          // TODO make relations into multi-poly
+          rt = new DspcUtils.RelationTranslator(osmEl, elements)
+          tobj = rt.getPolygon()
           break;
         default:
           // code block
