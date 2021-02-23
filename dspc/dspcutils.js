@@ -286,8 +286,11 @@ function makeProps(el, type) {
     let props = {
         "type": type,
         "id": el.id,
-        "power": el.tags.power
+        "power": ""
     }
+
+    if(el.hasOwnProperty("tags"))
+        props.power = el.tags.power
 
     return props
 }
