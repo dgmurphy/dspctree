@@ -175,7 +175,7 @@ class RelationTranslator {
                 mergedWay.nodes.push(wayRing[i].nodes[j])
         }
 
-        let tpoly = DspcUtils.makePolyFromClosedWay(mergedWay, this.elements)
+        let tpoly = makePolyFromClosedWay(mergedWay, this.elements)
 
         return tpoly
     }
@@ -475,7 +475,7 @@ function makeTurfObjectFromOSMelement(osmEl, elements) {
           tobj = makeTurfFromWay(osmEl, elements)
           break;
         case "relation":
-          rt = new DspcUtils.RelationTranslator(osmEl, elements)
+          rt = new RelationTranslator(osmEl, elements)
           tobj = rt.getPolygon()
           break;
         default:
