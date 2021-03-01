@@ -3,8 +3,8 @@
 const DspcTree= require('./dspctree.js')
 const DspcUtils = require('./dspcutils.js')
 
-const OSM_ELEMENTS_FILE = "./dspc/LosVientosRaw.json"
-//const OSM_ELEMENTS_FILE = "./dspc/SurryZoomOSM.json"
+//const OSM_ELEMENTS_FILE = "./dspc/LosVientosRaw.json"
+const OSM_ELEMENTS_FILE = "./dspc/SurryZoomOSM.json"
 const OSM_TREE_OUT_FILE = "./dspc/LosVientosTree.json"
 
 // Mock bounding box

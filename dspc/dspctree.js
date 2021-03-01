@@ -23,8 +23,10 @@ function osmResponseToDspcTree(osmResponse, bbox) {
 
     let osmAreas = buildOSMAreas(osmElementsList)  // list of areas and items inside
 
-    if(osmAreas.length === 0)
+    if(osmAreas.length === 0) {
+        console.log("WARNING: No OSM Areas found." )
         return null
+    }
 
     let osmGroups = buildOSMGroups(osmAreas)   // parent-children relations
     // Debug: Write Groups to File
@@ -185,8 +187,13 @@ function buildTurfObjects(osmElementsList) {
         let powerTag = DspcUtils.getPowerTag(el)
         if (DspcUtils.validTags.includes(powerTag)) {     
             // process only elements w/ power tag
-            let tobj = DspcUtils.makeTurfObjectFromOSMelement(el, osmElementsList)
-            turfObjects.push(tobj) 
+            try {
+                let tobj = DspcUtils.makeTurfObjectFromOSMelement(el, osmElementsList)
+                turfObjects.push(tobj) 
+              } catch (error) {
+                console.error(error);
+              }
+            
         }
     })
 
@@ -260,9 +267,11 @@ function makeParentChildren(areas) {
             for (let j = 0; j < siblings.length; ++j) {
                 let sibGroup = DspcUtils.getGroupByUID(siblings[j], areas)
                 //console.log("checking if " + sibGroup.name + " contains " + child)
-                sibContainsMe = DspcUtils.checkContains(sibGroup, child)  
-                if(sibContainsMe)   // if any sib contains me stop checking
-                    break
+                if (sibGroup) {
+                    sibContainsMe = DspcUtils.checkContains(sibGroup, child)  
+                    if(sibContainsMe)   // if any sib contains me stop checking
+                        break
+                }
             }
 
             if (!sibContainsMe)
@@ -283,10 +292,10 @@ function makeParentChildren(areas) {
 
 /**
  * buildOSMAreas is a high-level routine that calls a series of functions to 
- * build the objec that identifies children of all entities that are areas.
+ * build the object that identifies children of all entities that are areas.
  *
  * @param {json} osmElementsList the original OSM elements from the query response.
- * @returns {Object} The areas with paren-immediate-children-only heirarchy 
+ * @returns {Object} The areas with parent-immediate-children-only heirarchy 
  */
 function buildOSMAreas(osmElementsList) {
 

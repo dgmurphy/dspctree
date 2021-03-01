@@ -167,7 +167,7 @@ class RelationTranslator {
 
         let mergedWay = {
             "type": "way",
-            "id": 1,
+            "id": generateNodeID(),
             "nodes": []
         }
 
@@ -193,7 +193,7 @@ exports.RelationTranslator = RelationTranslator;
  * @returns {string} Large random string of digits
  */
 function generateNodeID() {
-    return Math.random().toString().slice(2)
+    return ( Math.random().toString().slice(2) + "0000" ) 
 }
 exports.generateNodeID = generateNodeID;
 
@@ -258,16 +258,16 @@ exports.loadJs = loadJs;
  * @param {string} fname 
  * @param {json} jstring 
  */
-// function writeJs(fname, js) {
+function writeJs(fname, js) {
 
-//     fs.writeFile(fname, JSON.stringify(js, null, 2), (err) => {
-//         if (err)
-//             console.log('Error writing file:', err)
-//         else
-//             console.log("Wrote " + fname)
-//     })
-// }
-// exports.writeJs = writeJs;
+    fs.writeFile(fname, JSON.stringify(js, null, 2), (err) => {
+        if (err)
+            console.log('Error writing file:', err)
+        else
+            console.log("Wrote " + fname)
+    })
+}
+exports.writeJs = writeJs;
 
 
 /**
@@ -312,8 +312,12 @@ function addChild(nodes, parentUid, childUid) {
 
     let parentNode = findNode(nodes, parentUid)
     let childNode = findNode(nodes, childUid)
-
-    parentNode.children.push(childNode)
+    try {
+        parentNode.children.push(childNode)
+    } catch (error) {
+        console.log("Error in addChild. Parent = " + parentUid + " Child " + childUid)
+        console.log(error)
+    }
 }
 exports.addChild = addChild;
 
@@ -458,7 +462,6 @@ function makeTurfFromWay(wayEl, elements) {
 /**
  * Build the Turf object based on the type of OSM element.
  *
- *  TODO: The case 'relation' is untested
  * 
  * @param {object} osmEl OSM element 
  * @param {array} elements list of OSM elements 
