@@ -1,3 +1,4 @@
+"use strict";
 const turf = require('@turf/turf')
 const DspcUtils = require('./dspc/dspcutils.js')
 

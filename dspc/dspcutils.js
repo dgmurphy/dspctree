@@ -1,3 +1,4 @@
+"use strict";
 const fs = require('fs')
 const turf = require('@turf/turf')
 
@@ -122,14 +123,14 @@ class RelationTranslator {
             if (nodes[0] === node) {  
                 return { "idx": i, "pos": "start"}
             }
-            else if (nodes[nodes.length - 1] == node) {
+            else if (nodes[nodes.length - 1] === node) {
                 return { "idx": i, "pos": "end"}
             }
         }
     }    
 
     /** Make the turf polygon and return it */
-    getPolygon() {
+    getPolygon(relation) {
 
         let members = relation.members
 
@@ -257,16 +258,16 @@ exports.loadJs = loadJs;
  * @param {string} fname 
  * @param {json} jstring 
  */
-function writeJs(fname, js) {
+// function writeJs(fname, js) {
 
-    fs.writeFile(fname, JSON.stringify(js, null, 2), (err) => {
-        if (err)
-            console.log('Error writing file:', err)
-        else
-            console.log("Wrote " + fname)
-    })
-}
-exports.writeJs = writeJs;
+//     fs.writeFile(fname, JSON.stringify(js, null, 2), (err) => {
+//         if (err)
+//             console.log('Error writing file:', err)
+//         else
+//             console.log("Wrote " + fname)
+//     })
+// }
+// exports.writeJs = writeJs;
 
 
 /**
@@ -282,7 +283,7 @@ function findNode(nodes, uid) {
 
     function recurse(nodes) {
         for (let i = 0; i < nodes.length; ++i) {
-            node = nodes[i]
+            let node = nodes[i]
             if (node.uid === uid) {
                 match = node
                 break
@@ -309,8 +310,8 @@ exports.findNode = findNode;
  */
 function addChild(nodes, parentUid, childUid) {
 
-    parentNode = findNode(nodes, parentUid)
-    childNode = findNode(nodes, childUid)
+    let parentNode = findNode(nodes, parentUid)
+    let childNode = findNode(nodes, childUid)
 
     parentNode.children.push(childNode)
 }
@@ -343,7 +344,7 @@ exports.getPowerTag = getPowerTag
 function getLongLat(id, elements) {
 
     for (let i = 0; i < elements.length; ++i) {
-        el = elements[i]
+        let el = elements[i]
         if (el.id === id)
             return [el.lon, el.lat]
     }
@@ -361,9 +362,9 @@ exports.getLongLat = getLongLat;
  */
 function getLongLats(wayEl, elements) {
 
-    longLats = []
+    let longLats = []
     for (let i = 0; i < wayEl.nodes.length; i++) {
-        node = wayEl.nodes[i]
+        let node = wayEl.nodes[i]
         longLats[i] = getLongLat(node, elements)
     }     
 
@@ -402,7 +403,7 @@ function makeProps(el, type) {
  */
 function makeLineStringFromWay(wayEl, elements) {
 
-    longLats = getLongLats(wayEl, elements)
+    let longLats = getLongLats(wayEl, elements)
     return turf.lineString(longLats, makeProps(wayEl, "way"))
 
 }
@@ -418,7 +419,7 @@ exports.makeLineStringFromWay = makeLineStringFromWay;
  */
 function makePolyFromClosedWay(wayEl, elements) {
 
-    longLats = getLongLats(wayEl, elements)
+    let longLats = getLongLats(wayEl, elements)
     return turf.polygon([longLats], makeProps(wayEl, "way"))
 }
 exports.makePolyFromClosedWay = makePolyFromClosedWay
@@ -475,8 +476,8 @@ function makeTurfObjectFromOSMelement(osmEl, elements) {
           tobj = makeTurfFromWay(osmEl, elements)
           break;
         case "relation":
-          rt = new RelationTranslator(osmEl, elements)
-          tobj = rt.getPolygon()
+          let rt = new RelationTranslator(osmEl, elements)
+          tobj = rt.getPolygon(osmEl)
           break;
         default:
           // code block
@@ -499,7 +500,7 @@ function getContainedObjectUIDs(parent, turfObjects) {
     turfObjects.forEach(function(tobj){
 
         // skip checking self
-        if (getUID(parent.properties) != getUID(tobj.properties)) {
+        if (getUID(parent.properties) !== getUID(tobj.properties)) {
             // turf function to check if one geometry contains another
             if (turf.booleanContains(parent, tobj)) {
                 all_contains.push(getUID(tobj.properties))
@@ -557,7 +558,7 @@ exports.checkContains = checkContains;
  */
 function getNodeRenderLabel(node) {
 
-    label = node.osmdata.type + " " + node.osmdata.id.toString() + " "
+    let label = node.osmdata.type + " " + node.osmdata.id.toString() + " "
     if (node.osmdata.hasOwnProperty("tags")) {
         if (node.osmdata.tags.hasOwnProperty("name"))
             label += node.osmdata.tags.name + " "
@@ -580,7 +581,7 @@ exports.getNodeRenderLabel = getNodeRenderLabel
  */
 function renderTree(node, depth) {
     
-    indent = ""
+    let indent = ""
     for (let i = 0; i < depth; ++i) 
         indent += "+"
 
@@ -629,9 +630,9 @@ exports.buildTreeString = buildTreeString;
  */
 function saveGroups(osmGroups) {
 
-    grpsWithChildren = []
+    let grpsWithChildren = []
     osmGroups.groups.forEach(function(group) {
-        hasChildren = false
+        let hasChildren = false
         group.members.forEach(function(member) {
             if (member.role === "child")
                 hasChildren = true
@@ -640,6 +641,6 @@ function saveGroups(osmGroups) {
             grpsWithChildren.push(group)
     })
 
-    writeJs("./dspc/DSPCgroups.json", grpsWithChildren)
+    //writeJs("./dspc/DSPCgroups.json", grpsWithChildren)
 }
 exports.saveGroups = saveGroups;

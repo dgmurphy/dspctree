@@ -1,3 +1,4 @@
+"use strict";
 const DspcUtils = require('./dspcutils.js')
 
 /**
@@ -21,33 +22,37 @@ function osmResponseToDspcTree(osmResponse, bbox) {
     }
 
     let osmAreas = buildOSMAreas(osmElementsList)  // list of areas and items inside
+
+    if(osmAreas.length === 0)
+        return null
+
     let osmGroups = buildOSMGroups(osmAreas)   // parent-children relations
     // Debug: Write Groups to File
-    DspcUtils.saveGroups(osmGroups)
+    //DspcUtils.saveGroups(osmGroups)
 
 
     let osmGroupsList = osmGroups.groups 
     let osmGroupsMeta = { "generator": osmGroups.generator }
 
     // All the nodes start as roots (no parents)
-    osmRootNodes = []
+    let osmRootNodes = []
     osmElementsList.forEach(function(osmData){
-        dnode = new DspcUtils.OSMTreeNode(osmData)
+        let dnode = new DspcUtils.OSMTreeNode(osmData)
         osmRootNodes.push(dnode)
     })
 
     // Make the groups into OSMGroupNode instances
-    osmGroupNodes = []
+    let osmGroupNodes = []
     osmGroupsList.forEach(function(groupData) {
-        dgroup = new DspcUtils.OSMGroupNode(groupData)
+        let dgroup = new DspcUtils.OSMGroupNode(groupData)
         osmGroupNodes.push(dgroup)
     })
 
     // Reparent based on the groups data
     //   Reverse for loop since we will be slicing
-    for (i = osmRootNodes.length - 1; i >= 0; i -= 1) {  
+    for (let i = osmRootNodes.length - 1; i >= 0; i -= 1) {  
         
-        dnode = osmRootNodes[i]
+        let dnode = osmRootNodes[i]
 
         // find my parent if I have one
         osmGroupNodes.forEach(function(grp) {
@@ -64,7 +69,7 @@ function osmResponseToDspcTree(osmResponse, bbox) {
     }
     
     let treeString = DspcUtils.buildTreeString(osmRootNodes)
-    dspcTreeJson = buildEnhancedOSMjson(osmElementsMeta, osmGroupsMeta, osmRootNodes, treeString, bbox)
+    let dspcTreeJson = buildEnhancedOSMjson(osmElementsMeta, osmGroupsMeta, osmRootNodes, treeString, bbox)
     
     return dspcTreeJson    
 
@@ -97,11 +102,11 @@ function buildOSMGroups(osmAreas) {
             "members":[]
         }
 
-        osmArea = osmAreas[i]
-        typeAndID = DspcUtils.getTypeAndIDFromUID(osmArea.uid)
+        let osmArea = osmAreas[i]
+        let typeAndID = DspcUtils.getTypeAndIDFromUID(osmArea.uid)
         
         // add the parent member
-        member = {
+        let member = {
             "type": typeAndID.eltype,
             "ref": typeAndID.id,
             "role": "self"
@@ -145,7 +150,7 @@ function buildEnhancedOSMjson(osmElementsMeta, osmGroupsMeta, osmRootNodes, tree
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
 
-    jsobj = {
+    let jsobj = {
         "osm_version": osmElementsMeta.version,
         "osm_generator": osmElementsMeta.generator,
         "osm3s": osmElementsMeta.osm3s,
@@ -177,10 +182,10 @@ function buildTurfObjects(osmElementsList) {
     let turfObjects = []
 
     osmElementsList.forEach(function(el){
-        powerTag = DspcUtils.getPowerTag(el)
+        let powerTag = DspcUtils.getPowerTag(el)
         if (DspcUtils.validTags.includes(powerTag)) {     
             // process only elements w/ power tag
-            tobj = DspcUtils.makeTurfObjectFromOSMelement(el, osmElementsList)
+            let tobj = DspcUtils.makeTurfObjectFromOSMelement(el, osmElementsList)
             turfObjects.push(tobj) 
         }
     })
@@ -203,10 +208,10 @@ function buildAreas(turfObjects) {
 
     let areas = []
 
-    siblings = JSON.parse(JSON.stringify(turfObjects)) // deep copy
+    let siblings = JSON.parse(JSON.stringify(turfObjects)) // deep copy
 
     while (siblings.length > 0) {
-        tobject = siblings.pop()
+        let tobject = siblings.pop()
         let area = {
             "uid": DspcUtils.getUID(tobject.properties),
             "powerTag": tobject.properties.power,
@@ -244,7 +249,7 @@ function makeParentChildren(areas) {
 
         for (let i = 0; i < all_contains.length; ++i) {
             
-            child = all_contains[i]
+            let child = all_contains[i]
             
             // Make a list of my siblings in the contains array
             var siblings = all_contains.filter(e => e !== child)
@@ -253,7 +258,7 @@ function makeParentChildren(areas) {
             let sibContainsMe = false
             
             for (let j = 0; j < siblings.length; ++j) {
-                sibGroup = DspcUtils.getGroupByUID(siblings[j], areas)
+                let sibGroup = DspcUtils.getGroupByUID(siblings[j], areas)
                 //console.log("checking if " + sibGroup.name + " contains " + child)
                 sibContainsMe = DspcUtils.checkContains(sibGroup, child)  
                 if(sibContainsMe)   // if any sib contains me stop checking

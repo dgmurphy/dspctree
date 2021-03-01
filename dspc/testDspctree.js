@@ -1,3 +1,5 @@
+"use strict";
+
 const DspcTree= require('./dspctree.js')
 const DspcUtils = require('./dspcutils.js')
 
@@ -16,8 +18,8 @@ const bbox = [
 // Mock OSM Query
 let osmResponse = DspcUtils.loadJs(OSM_ELEMENTS_FILE)
 
-outjson =   DspcTree.osmResponseToDspcTree(osmResponse, bbox)
-DspcUtils.writeJs(OSM_TREE_OUT_FILE, outjson)
+let outjson =   DspcTree.osmResponseToDspcTree(osmResponse, bbox)
+//DspcUtils.writeJs(OSM_TREE_OUT_FILE, outjson)
 
 console.log(outjson.dspc_enhancements.comments)
 console.log("Done")
