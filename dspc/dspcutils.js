@@ -165,18 +165,24 @@ class RelationTranslator {
             nextNode = nextWay.nodes[nextWay.nodes.length - 1]
         }
 
-        let mergedWay = {
-            "type": "way",
-            "id": generateNodeID(),
-            "nodes": []
-        }
-
+        let ringNodes = []
         for (let i = 0; i < wayRing.length; ++i) {
             for (let j = 0; j < wayRing[i].nodes.length; ++j)
-                mergedWay.nodes.push(wayRing[i].nodes[j])
+                ringNodes.push(wayRing[i].nodes[j])
         }
 
-        let tpoly = makePolyFromClosedWay(mergedWay, this.elements)
+        let longLats =[]
+        for (let i = 0; i < ringNodes.length; ++i) {
+            let node = ringNodes[i]
+            longLats[i] = getLongLat(node, this.elements)
+        }
+
+        let rprops = { type: "relation", id: relation.id, power: ""}
+        if (relation.hasOwnProperty("tags"))
+            if(relation.tags.hasOwnProperty("power"))
+                rprops.power = relation.tags.power
+
+        let tpoly  = turf.polygon([longLats], rprops)
 
         return tpoly
     }
@@ -258,16 +264,16 @@ exports.loadJs = loadJs;
  * @param {string} fname 
  * @param {json} jstring 
  */
-function writeJs(fname, js) {
+// function writeJs(fname, js) {
 
-    fs.writeFile(fname, JSON.stringify(js, null, 2), (err) => {
-        if (err)
-            console.log('Error writing file:', err)
-        else
-            console.log("Wrote " + fname)
-    })
-}
-exports.writeJs = writeJs;
+//     fs.writeFile(fname, JSON.stringify(js, null, 2), (err) => {
+//         if (err)
+//             console.log('Error writing file:', err)
+//         else
+//             console.log("Wrote " + fname)
+//     })
+// }
+// exports.writeJs = writeJs;
 
 
 /**
@@ -280,12 +286,13 @@ exports.writeJs = writeJs;
 function findNode(nodes, uid) {
 
     let match 
-
+    let found = false
     function recurse(nodes) {
         for (let i = 0; i < nodes.length; ++i) {
             let node = nodes[i]
             if (node.uid === uid) {
                 match = node
+                found = true
                 break
             } else {
                 recurse(node.children)
@@ -293,7 +300,11 @@ function findNode(nodes, uid) {
         }
     }
 
-    recurse(nodes)
+    if (!found)
+        recurse(nodes)
+
+    if(!match) 
+        console.log("WARNING: element " + uid + " is missing.")
 
     return match
 }

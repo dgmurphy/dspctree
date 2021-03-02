@@ -36,6 +36,9 @@ function osmResponseToDspcTree(osmResponse, bbox) {
     let osmGroupsList = osmGroups.groups 
     let osmGroupsMeta = { "generator": osmGroups.generator }
 
+    // debug
+    //DspcUtils.writeJs("groupsdebug.json", osmGroupsList)
+
     // All the nodes start as roots (no parents)
     let osmRootNodes = []
     osmElementsList.forEach(function(osmData){

@@ -12,8 +12,10 @@ for (let i = 0; i < inJson.elements.length; ++i) {
     if(el.hasOwnProperty("tags")) 
         if(el.tags.hasOwnProperty("power"))
             powerElements.push(el)
-        else  
+        else  {
             numRemoved += 1
+            console.log("type: " + el.type + " id: " + el.id)
+        }
 
 }
 

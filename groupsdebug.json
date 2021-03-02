@@ -1,0 +1,229 @@
+[
+  {
+    "type": "relation",
+    "id": "86004291901699090000",
+    "members": [
+      {
+        "type": "node",
+        "ref": "1616212930",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: node1616212930 portal"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "98549922203765260000",
+    "members": [
+      {
+        "type": "node",
+        "ref": "1616186297",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: node1616186297 portal"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "32456105363251030000",
+    "members": [
+      {
+        "type": "node",
+        "ref": "1615233882",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: node1615233882 portal"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "66099548638263170000",
+    "members": [
+      {
+        "type": "node",
+        "ref": "1615208732",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: node1615208732 portal"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "222252221204302550000",
+    "members": [
+      {
+        "type": "relation",
+        "ref": "8632517",
+        "role": "self"
+      },
+      {
+        "type": "way",
+        "ref": "81818612",
+        "role": "child"
+      },
+      {
+        "type": "way",
+        "ref": "148409694",
+        "role": "child"
+      },
+      {
+        "type": "way",
+        "ref": "148409695",
+        "role": "child"
+      },
+      {
+        "type": "way",
+        "ref": "148528456",
+        "role": "child"
+      },
+      {
+        "type": "way",
+        "ref": "670352175",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "1616212930",
+        "role": "child"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: relation8632517 plant"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "57867265024317320000",
+    "members": [
+      {
+        "type": "way",
+        "ref": "670352175",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way670352175 line"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "62110176113254780000",
+    "members": [
+      {
+        "type": "way",
+        "ref": "148528456",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way148528456 line"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "65139921655917380000",
+    "members": [
+      {
+        "type": "way",
+        "ref": "148526275",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way148526275 line"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "3394805710607980000",
+    "members": [
+      {
+        "type": "way",
+        "ref": "148409695",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way148409695 line"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "415496540473502930000",
+    "members": [
+      {
+        "type": "way",
+        "ref": "148409694",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way148409694 line"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "81169294728678860000",
+    "members": [
+      {
+        "type": "way",
+        "ref": "81818612",
+        "role": "self"
+      },
+      {
+        "type": "node",
+        "ref": "1615208732",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "1615233882",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "1616186297",
+        "role": "child"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way81818612 substation"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "154033602666552530000",
+    "members": [
+      {
+        "type": "way",
+        "ref": "20523238",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way20523238 line"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "94755412368835250000",
+    "members": [
+      {
+        "type": "way",
+        "ref": "20302846",
+        "role": "self"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way20302846 line"
+    }
+  }
+]
