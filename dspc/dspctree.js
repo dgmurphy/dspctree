@@ -155,12 +155,20 @@ function buildEnhancedOSMjson(osmElementsMeta, osmGroupsMeta, osmRootNodes, tree
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
 
+    // truncate long float strings
+    bbox = bbox.substring(1, bbox.length - 1).split(",")
+    for (let i = 0; i < bbox.length; ++i) 
+        bbox[i] = parseFloat(bbox[i])
+
+    let bboxstr = ("Map: SW(" + bbox[0].toFixed(3) + ", " + bbox[1].toFixed(3) + ") NE(" +
+        bbox[2].toFixed(3) + ", " + bbox[3].toFixed(3) + ")")
+
     let jsobj = {
         "osm_version": osmElementsMeta.version,
         "osm_generator": osmElementsMeta.generator,
         "osm3s": osmElementsMeta.osm3s,
         "dspc_enhancements": {
-            "query_bbox": bbox,
+            "query_bbox": bboxstr,
             "enhancements_timestamp": today.toISOString(),
             "generator": osmGroupsMeta.generator,
             "comments": treeString // tree render of the major entities

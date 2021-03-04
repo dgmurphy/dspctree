@@ -264,16 +264,16 @@ exports.loadJs = loadJs;
  * @param {string} fname 
  * @param {json} jstring 
  */
-// function writeJs(fname, js) {
+function writeJs(fname, js) {
 
-//     fs.writeFile(fname, JSON.stringify(js, null, 2), (err) => {
-//         if (err)
-//             console.log('Error writing file:', err)
-//         else
-//             console.log("Wrote " + fname)
-//     })
-// }
-// exports.writeJs = writeJs;
+    fs.writeFile(fname, JSON.stringify(js, null, 2), (err) => {
+        if (err)
+            console.log('Error writing file:', err)
+        else
+            console.log("Wrote " + fname)
+    })
+}
+exports.writeJs = writeJs;
 
 
 /**
@@ -597,7 +597,7 @@ function renderTree(node, depth) {
     
     let indent = ""
     for (let i = 0; i < depth; ++i) 
-        indent += "+"
+        indent += "----"
 
     let powertag = getPowerTag(node.osmdata)
     let label = getNodeRenderLabel(node)
@@ -624,6 +624,8 @@ exports.renderTree = renderTree;
  */
 // Human readable render of the key elements in the tree
 function buildTreeString(roots) {
+
+    TREE_LIST = []
 
     roots.forEach(function(root) {
         renderTree(root, 0, [])
@@ -655,6 +657,6 @@ function saveGroups(osmGroups) {
             grpsWithChildren.push(group)
     })
 
-    //writeJs("./dspc/DSPCgroups.json", grpsWithChildren)
+    writeJs("./dspc/DSPCgroups.json", grpsWithChildren)
 }
 exports.saveGroups = saveGroups;

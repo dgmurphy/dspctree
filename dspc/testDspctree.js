@@ -8,12 +8,7 @@ const OSM_ELEMENTS_FILE = "./dspc/SurryZoomOSM.json"
 const OSM_TREE_OUT_FILE = "./dspc/LosVientosTree.json"
 
 // Mock bounding box
-const bbox = [ 
-    -32.8479015806428,
-    -71.01635456085205,
-    -32.840798706369604,
-    -71.0077178478241
-]
+const bbox = "(-32.847, -71.016, -32.840, -71.007)"
 
 // Mock OSM Query
 let osmResponse = DspcUtils.loadJs(OSM_ELEMENTS_FILE)
