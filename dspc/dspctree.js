@@ -15,6 +15,12 @@ const DspcUtils = require('./dspcutils.js')
 function osmResponseToDspcTree(osmResponse, bbox) {
 
     let osmElementsList = osmResponse.elements
+
+    // OSM should not be returning duplicates, but it is
+    osmElementsList = DspcUtils.getUniqueElements(osmElementsList)  
+
+    DspcUtils.writeJs("osmelementslist.json", osmElementsList)
+
     let osmElementsMeta = {
         "version": osmResponse.version,
         "generator": osmResponse.generator,
@@ -30,7 +36,7 @@ function osmResponseToDspcTree(osmResponse, bbox) {
 
     let osmGroups = buildOSMGroups(osmAreas)   // parent-children relations
     // Debug: Write Groups to File
-    //DspcUtils.saveGroups(osmGroups)
+    DspcUtils.saveGroups(osmGroups)
 
 
     let osmGroupsList = osmGroups.groups 
@@ -184,22 +190,27 @@ function buildEnhancedOSMjson(osmElementsMeta, osmGroupsMeta, osmRootNodes, tree
  * buildTurfObjects turns OSM elements into Turf (GeoJSON) objects so we can
  * use the Turf functions to see which elements are contained by other elements.
  * Only objects that have the desired power tags are included. Anonymous nodes
- * or 'pole' nodes are not included. TODO (allow 'pole' nodes?)
+ * are not included. Change the validTags list as desired.
+ * 
+ * NOTE: Testing shows that OSM responses can contain duplicate nodes
+ * (same type and ID) even though that is not supposed to happen. Duplicates are
+ * stripped out here.
+ * @todo Explore this phenomenon something seems off.
  *
  * @param {json} osmElementsList the source OSM elements
  * @returns {json} Turf objects corresponding to the OSM elements
  * 
  */
-function buildTurfObjects(osmElementsList) {
+function buildTurfObjects(uniqueOsmElementsList) {
 
     let turfObjects = []
 
-    osmElementsList.forEach(function(el){
+    uniqueOsmElementsList.forEach(function(el){
         let powerTag = DspcUtils.getPowerTag(el)
         if (DspcUtils.validTags.includes(powerTag)) {     
             // process only elements w/ power tag
             try {
-                let tobj = DspcUtils.makeTurfObjectFromOSMelement(el, osmElementsList)
+                let tobj = DspcUtils.makeTurfObjectFromOSMelement(el, uniqueOsmElementsList)
                 turfObjects.push(tobj) 
               } catch (error) {
                 console.error(error);
@@ -208,7 +219,7 @@ function buildTurfObjects(osmElementsList) {
         }
     })
 
-    return turfObjects
+    return turfObjects   
 }
 
 
@@ -259,6 +270,9 @@ function buildAreas(turfObjects) {
  * 
  */ 
 function makeParentChildren(areas) {
+
+    let jareas = { ars: areas }
+    DspcUtils.writeJs("areas.json", jareas)
 
     areas.forEach(function(area){
 
@@ -314,7 +328,7 @@ function buildOSMAreas(osmElementsList) {
     let areas = buildAreas(turfObjects)
     let areasParentChildren = makeParentChildren(areas)
 
-    //DspcUtils.writeJs("out.json", areasParentChildren)
+    DspcUtils.writeJs("makeParentChildren.json", areasParentChildren)
 
     return areasParentChildren
 }

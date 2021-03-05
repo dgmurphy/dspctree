@@ -1,45 +1,119 @@
 [
   {
     "type": "relation",
-    "id": "4917038449232294",
+    "id": "47307100729197240000",
     "members": [
       {
-        "type": "way",
-        "ref": "835546012",
+        "type": "relation",
+        "ref": "8632517",
         "role": "self"
       },
       {
         "type": "node",
-        "ref": "7798904976",
+        "ref": "1717074529",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "1717074531",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "6277675393",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "7851467861",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "7851467862",
+        "role": "child"
+      },
+      {
+        "type": "way",
+        "ref": "81818612",
+        "role": "child"
+      },
+      {
+        "type": "way",
+        "ref": "81818627",
+        "role": "child"
+      },
+      {
+        "type": "way",
+        "ref": "159594947",
         "role": "child"
       }
     ],
     "tags": {
-      "dspc_group": "Group: way835546012 plant"
+      "dspc_group": "Group: relation8632517 plant"
     }
   },
   {
     "type": "relation",
-    "id": "9538808953806412",
+    "id": "164299084822712160000",
     "members": [
       {
         "type": "way",
-        "ref": "835546011",
+        "ref": "81818627",
         "role": "self"
       },
       {
         "type": "node",
-        "ref": "7798904969",
+        "ref": "6277660884",
         "role": "child"
       },
       {
         "type": "node",
-        "ref": "7798904970",
+        "ref": "6277675387",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "6277675389",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "6277675391",
         "role": "child"
       }
     ],
     "tags": {
-      "dspc_group": "Group: way835546011 plant"
+      "dspc_group": "Group: way81818627 plant"
+    }
+  },
+  {
+    "type": "relation",
+    "id": "80368342002650260000",
+    "members": [
+      {
+        "type": "way",
+        "ref": "81818612",
+        "role": "self"
+      },
+      {
+        "type": "node",
+        "ref": "5584592513",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "6277675399",
+        "role": "child"
+      },
+      {
+        "type": "node",
+        "ref": "6277675430",
+        "role": "child"
+      }
+    ],
+    "tags": {
+      "dspc_group": "Group: way81818612 substation"
     }
   }
 ]

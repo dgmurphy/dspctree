@@ -10,17 +10,25 @@ let TREE_LIST = []
 /** The power entities that will be included in building the heirarchy
  * Note that 'pole' are not included so they will show up in the root,
  * as will anonymous nodes. */
+// const validTags = [
+//     "plant", 
+//     "substation",
+//     "station", 
+//     "generator", 
+//     "transformer",
+//     "line",
+//     "minor_line",
+//     "busbar",
+//     "portal",
+//     "switch"
+// ]
 const validTags = [
     "plant", 
     "substation",
     "station", 
-    "generator", 
-    "transformer",
-    "line",
-    "minor_line",
-    "busbar",
-    "portal",
-    "switch"
+    "generator",
+    "transformer" 
+
 ]
 exports.validTags = validTags
 
@@ -433,9 +441,15 @@ exports.makeLineStringFromWay = makeLineStringFromWay;
  * @returns {Polygon} a Turf polygon 
  */
 function makePolyFromClosedWay(wayEl, elements) {
-
+    
+    let tpoly
     let longLats = getLongLats(wayEl, elements)
-    return turf.polygon([longLats], makeProps(wayEl, "way"))
+    try {
+        tpoly = turf.polygon([longLats], makeProps(wayEl, "way"))
+    } catch (error) {
+        console.log(error)
+    }
+    return tpoly
 }
 exports.makePolyFromClosedWay = makePolyFromClosedWay
 
@@ -482,20 +496,24 @@ function makeTurfObjectFromOSMelement(osmEl, elements) {
 
     let tobj
 
-    switch(osmEl.type) {
-        case "node":
-          tobj = makePointFromNode(osmEl)
-          break;
-        case "way":
-          tobj = makeTurfFromWay(osmEl, elements)
-          break;
-        case "relation":
-          let rt = new RelationTranslator(osmEl, elements)
-          tobj = rt.getPolygon(osmEl)
-          break;
-        default:
-          // code block
-      }    
+    try {
+        switch(osmEl.type) {
+            case "node":
+            tobj = makePointFromNode(osmEl)
+            break;
+            case "way":
+            tobj = makeTurfFromWay(osmEl, elements)
+            break;
+            case "relation":
+            let rt = new RelationTranslator(osmEl, elements)
+            tobj = rt.getPolygon(osmEl)
+            break;
+            default:
+            // code block
+        }    
+    } catch (error) {
+        console.error(error);
+    }
 
       return tobj
 }
@@ -510,10 +528,15 @@ exports.makeTurfObjectFromOSMelement = makeTurfObjectFromOSMelement;
  */
 function getContainedObjectUIDs(parent, turfObjects) {
 
+    let jts = { tobjs: turfObjects }
+    writeJs("turfobjects.json", jts)
+
     let all_contains = []
     turfObjects.forEach(function(tobj){
 
         // skip checking self
+        let parentProps = parent.properties
+        let tobjProps = tobj.properties
         if (getUID(parent.properties) !== getUID(tobj.properties)) {
             // turf function to check if one geometry contains another
             if (turf.booleanContains(parent, tobj)) {
@@ -660,3 +683,41 @@ function saveGroups(osmGroups) {
     writeJs("./dspc/DSPCgroups.json", grpsWithChildren)
 }
 exports.saveGroups = saveGroups;
+
+/**
+ * OSM should not be returning duplicate nodes but it seems
+ * to be doing just that. Use this function to remove them
+ */
+function getUniqueElements(osmElements) {
+
+    let uniques = [osmElements[0]]
+    let numdups = 0
+    for (let i = 1; i < osmElements.length; ++i) {
+        let unique = true
+        for (let j = 0; j < uniques.length; j++) {
+
+            if (sameElement(uniques[j], osmElements[i])) {
+                unique = false
+                numdups += 1
+                break
+            }
+        }
+
+        if (unique)
+            uniques.push(osmElements[i])
+    }
+
+    if(numdups > 0)
+        console.log("Warning: had to drop " + numdups + " duplicate OSM elements.")
+
+    return uniques
+}
+exports.getUniqueElements = getUniqueElements;
+
+
+function sameElement(el1, el2) {
+    if ((el1.id === el2.id) && (el1.type === el2.type))
+        return true
+    else
+        return false
+}
